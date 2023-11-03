@@ -40,13 +40,15 @@ public class ContaDAO {
     return contas;
     }
 
-    public void criarConta(Conta conta) throws SQLException {
+    public ResultSet criarConta(Conta conta) throws SQLException {
         String sql = "INSERT INTO contas (cpf, tipo) VALUES (?, ?)";
 
         try (PreparedStatement statement = conn.prepareStatement(sql)) {
             statement.setString(1, conta.getCpf());
             statement.setInt(2, conta.getTipo());
             statement.executeUpdate();
+            ResultSet resultado = statement.getResultSet();
+            return resultado;
         }
     }
 }
