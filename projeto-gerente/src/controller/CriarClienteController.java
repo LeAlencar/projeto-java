@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import DAO.ClienteDAO;
 import DAO.ContaDAO;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -53,15 +54,20 @@ public class CriarClienteController {
             Connection conn = conexao.getConnection();
             ClienteDAO dao = new ClienteDAO(conn);
             ContaDAO contaDAO = new ContaDAO(conn);
-            boolean clienteCriado = dao.criarCliente(cliente);
+            ResultSet clienteExiste = dao.consultarCliente(cliente);
+            if(!clienteExiste.isBeforeFirst()) {
+                boolean clienteCriado = dao.criarCliente(cliente);
+            }
+            
             boolean contaCriada = contaDAO.criarConta(conta);
 
-            if (clienteCriado && contaCriada) {
+            if (contaCriada) {
                 JOptionPane.showMessageDialog(view, "Usuário Criado!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(view, "Usuário já existe!", "Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(view, "Usuário/Conta já existe!", "Erro", JOptionPane.ERROR_MESSAGE);
             }
         } catch (SQLException err) {
+            System.out.println(err);
             JOptionPane.showMessageDialog(view, "Erro de conexão!", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
