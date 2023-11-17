@@ -24,22 +24,26 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="showClientBalance" max="32767" attributes="0"/>
-                          <Component id="deleteClientButton" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                      <Component id="createClientButton" min="-2" pref="161" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
-                      <Component id="titulo" min="-2" pref="220" max="-2" attributes="0"/>
-                  </Group>
+              <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+              <Component id="titulo" min="-2" pref="220" max="-2" attributes="0"/>
+              <EmptySpace pref="186" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="showClientBalance" max="32767" attributes="0"/>
+                  <Component id="deleteClientButton" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="79" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="listarClientesButton" min="-2" pref="161" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="326" max="32767" attributes="0"/>
+                  <Component id="createClientButton1" min="-2" pref="161" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -49,13 +53,20 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="titulo" min="-2" pref="52" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+              <Component id="deleteClientButton" min="-2" pref="73" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="createClientButton" alignment="3" min="-2" pref="73" max="-2" attributes="0"/>
-                  <Component id="deleteClientButton" alignment="3" min="-2" pref="73" max="-2" attributes="0"/>
+                  <Component id="showClientBalance" alignment="3" min="-2" pref="71" max="-2" attributes="0"/>
+                  <Component id="listarClientesButton" alignment="3" min="-2" pref="73" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-              <Component id="showClientBalance" min="-2" pref="71" max="-2" attributes="0"/>
-              <EmptySpace pref="148" max="32767" attributes="0"/>
+              <EmptySpace pref="147" max="32767" attributes="0"/>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
+                  <Component id="createClientButton1" min="-2" pref="73" max="-2" attributes="0"/>
+                  <EmptySpace pref="287" max="32767" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -70,12 +81,12 @@
         <Property name="text" type="java.lang.String" value="Painel de Gerente"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="createClientButton">
+    <Component class="javax.swing.JButton" name="listarClientesButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Criar Cliente"/>
+        <Property name="text" type="java.lang.String" value="Listar Todos Clientes"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createClientButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listarClientesButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="deleteClientButton">
@@ -90,6 +101,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Exibir Saldo do Cliente"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="showClientBalanceActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="createClientButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Criar Cliente"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createClientButton1ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

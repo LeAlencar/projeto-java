@@ -13,6 +13,7 @@ import controller.CriarClienteController;
  * @author leandroalencar
  */
 public class CriarCliente extends javax.swing.JFrame {
+
     private CriarClienteController controller;
 
     /**
@@ -22,17 +23,17 @@ public class CriarCliente extends javax.swing.JFrame {
         initComponents();
         controller = new CriarClienteController(this);
     }
-    
+
     public int getTipoContaSelecionada() {
-    if (buttonContaCorrente.isSelected()) {
-        return 1;
-    } else if (buttonContaSalario.isSelected()) {
-        return 2;
-    } else if (buttonContaPoupanca.isSelected()) {
-        return 3;
-    } 
-    return 0;
-}
+        if (buttonContaCorrente.isSelected()) {
+            return 1;
+        } else if (buttonContaSalario.isSelected()) {
+            return 2;
+        } else if (buttonContaPoupanca.isSelected()) {
+            return 3;
+        }
+        return 0;
+    }
 
     public JButton getButtonCriarCliente() {
         return buttonCriarCliente;
@@ -44,6 +45,10 @@ public class CriarCliente extends javax.swing.JFrame {
 
     public JTextField getEntradaCPF() {
         return entradaCPF;
+    }
+
+    public JTextField getEntradaLimiteContaCorrente() {
+        return entradaLimiteContaCorrente;
     }
 
     public void setEntradaCPF(JTextField entradaCPF) {
@@ -97,6 +102,8 @@ public class CriarCliente extends javax.swing.JFrame {
         buttonContaSalario = new javax.swing.JRadioButton();
         buttonContaCorrente = new javax.swing.JRadioButton();
         buttonContaPoupanca = new javax.swing.JRadioButton();
+        jLabel5 = new javax.swing.JLabel();
+        entradaLimiteContaCorrente = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,6 +143,8 @@ public class CriarCliente extends javax.swing.JFrame {
         buttonGroup1.add(buttonContaPoupanca);
         buttonContaPoupanca.setText("Conta Poupança");
 
+        jLabel5.setText("Limite da Conta Corrente");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -149,18 +158,6 @@ public class CriarCliente extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(buttonCriarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(264, 264, 264))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(entradaSaldo)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(entradaNome, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(entradaSenha)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(entradaCPF)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))
-                .addGap(251, 251, 251))
             .addGroup(layout.createSequentialGroup()
                 .addGap(170, 170, 170)
                 .addComponent(buttonContaSalario)
@@ -169,6 +166,26 @@ public class CriarCliente extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addComponent(buttonContaPoupanca)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(entradaLimiteContaCorrente, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(entradaSaldo)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(entradaNome, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(labelSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(entradaSenha)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(entradaCPF)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)))
+                        .addGap(248, 248, 248))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,11 +204,15 @@ public class CriarCliente extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(entradaCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(entradaSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(entradaLimiteContaCorrente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonContaSalario)
                     .addComponent(buttonContaCorrente)
@@ -209,10 +230,9 @@ public class CriarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonContaSalarioActionPerformed
 
     private void buttonCriarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCriarClienteActionPerformed
-       controller.CriarCliente();
+        controller.CriarCliente();
     }//GEN-LAST:event_buttonCriarClienteActionPerformed
 
- 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton buttonContaCorrente;
@@ -221,6 +241,7 @@ public class CriarCliente extends javax.swing.JFrame {
     private javax.swing.JButton buttonCriarCliente;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField entradaCPF;
+    private javax.swing.JTextField entradaLimiteContaCorrente;
     private javax.swing.JTextField entradaNome;
     private javax.swing.JTextField entradaSaldo;
     private javax.swing.JTextField entradaSenha;
@@ -228,6 +249,7 @@ public class CriarCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel labelSenha;
     // End of variables declaration//GEN-END:variables
 }

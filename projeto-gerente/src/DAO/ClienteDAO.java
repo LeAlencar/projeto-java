@@ -31,29 +31,27 @@ public class ClienteDAO {
         return resultado;
     }
 
-    public ResultSet criarCliente(Cliente cliente) throws SQLException {
+    public boolean criarCliente(Cliente cliente) throws SQLException {
         String sql = "INSERT INTO clientes (nome, senha, cpf) VALUES (?, ?, ?)";
 
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, cliente.getNome());
         statement.setString(2, cliente.getSenha());
         statement.setString(3, cliente.getCpf());
-        statement.executeUpdate();
 
-        ResultSet resultado = statement.getResultSet();
-        return resultado;
+        int criou = statement.executeUpdate();
 
+        return criou > 0; 
     }
 
-    public void excluirCliente(Cliente cliente) throws SQLException {
+    public boolean excluirCliente(Cliente cliente) throws SQLException {
         String sql = "DELETE FROM clientes WHERE cpf = ?";
 
         try (PreparedStatement statement = conn.prepareStatement(sql)) {
             statement.setString(1, cliente.getCpf());
-            statement.executeUpdate();
+            int excluiu = statement.executeUpdate();
+            return excluiu > 0; 
         }
     }
-    
-    
 
 }

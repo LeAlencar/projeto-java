@@ -1,5 +1,8 @@
 package view;
 
+import java.awt.BorderLayout;
+import javax.swing.JFrame;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -15,6 +18,10 @@ public class MenuInicial extends javax.swing.JFrame {
      * Creates new form MenuInicial
      */
     public MenuInicial() {
+        setTitle("Gerente - Banco Fintech");
+        setSize(600, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
         initComponents();
     }
 
@@ -28,9 +35,10 @@ public class MenuInicial extends javax.swing.JFrame {
     private void initComponents() {
 
         titulo = new javax.swing.JLabel();
-        createClientButton = new javax.swing.JButton();
+        listarClientesButton = new javax.swing.JButton();
         deleteClientButton = new javax.swing.JButton();
         showClientBalance = new javax.swing.JButton();
+        createClientButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,10 +46,10 @@ public class MenuInicial extends javax.swing.JFrame {
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setText("Painel de Gerente");
 
-        createClientButton.setText("Criar Cliente");
-        createClientButton.addActionListener(new java.awt.event.ActionListener() {
+        listarClientesButton.setText("Listar Todos Clientes");
+        listarClientesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createClientButtonActionPerformed(evt);
+                listarClientesButtonActionPerformed(evt);
             }
         });
 
@@ -53,24 +61,40 @@ public class MenuInicial extends javax.swing.JFrame {
         });
 
         showClientBalance.setText("Exibir Saldo do Cliente");
+        showClientBalance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showClientBalanceActionPerformed(evt);
+            }
+        });
+
+        createClientButton1.setText("Criar Cliente");
+        createClientButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createClientButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(showClientBalance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(deleteClientButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(77, 77, 77)
-                        .addComponent(createClientButton, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addGap(150, 150, 150)
+                .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(186, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(76, 76, 76)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(showClientBalance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(deleteClientButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(listarClientesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(326, Short.MAX_VALUE)
+                    .addComponent(createClientButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(69, 69, 69)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,32 +102,47 @@ public class MenuInicial extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(79, 79, 79)
+                .addComponent(deleteClientButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(createClientButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deleteClientButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(78, 78, 78)
-                .addComponent(showClientBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(148, Short.MAX_VALUE))
+                    .addComponent(showClientBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(listarClientesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(147, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(147, 147, 147)
+                    .addComponent(createClientButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(287, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void createClientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createClientButtonActionPerformed
-        CriarCliente criarCliente = new CriarCliente();
-        criarCliente.setVisible(true);
-    // Se você quiser fechar o MenuPrincipal ao abrir o SegundoFrame, descomente a linha abaixo
-    // this.dispose();
-    }//GEN-LAST:event_createClientButtonActionPerformed
+    private void listarClientesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarClientesButtonActionPerformed
+        ListarClientes listarClientes = new ListarClientes();
+        listarClientes.setVisible(true);
+    }//GEN-LAST:event_listarClientesButtonActionPerformed
 
     private void deleteClientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteClientButtonActionPerformed
-        // TODO add your handling code here:
+        ExcluirCliente excluirCliente = new ExcluirCliente();
+        excluirCliente.setVisible(true);
     }//GEN-LAST:event_deleteClientButtonActionPerformed
+
+    private void createClientButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createClientButton1ActionPerformed
+        CriarCliente criarCliente = new CriarCliente();
+        criarCliente.setVisible(true);
+    }//GEN-LAST:event_createClientButton1ActionPerformed
+
+    private void showClientBalanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showClientBalanceActionPerformed
+       SaldoCliente saldoCliente = new SaldoCliente();
+       saldoCliente.setVisible(true);
+    }//GEN-LAST:event_showClientBalanceActionPerformed
 
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton createClientButton;
+    private javax.swing.JButton createClientButton1;
     private javax.swing.JButton deleteClientButton;
+    private javax.swing.JButton listarClientesButton;
     private javax.swing.JButton showClientBalance;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
