@@ -12,6 +12,7 @@ import model.ContaCorrente;
 import model.ContaPoupanca;
 import model.ContaSalario;
 import model.SaldoELimite;
+import model.Transacao;
 import java.util.Date;
 
 /**
@@ -181,4 +182,35 @@ public class ContaDAO {
             preparedStatementSaldo.executeUpdate();
         }
     }
+    
+    public List<Transacao> listarTransacoes(String cpf, String senha) throws SQLException {
+    List<Transacao> transacoes = new ArrayList<>();
+
+    // Validação do usuário
+    String usuarioValidacao = "SELECT * FROM clientes WHERE cpf = ? AND senha = ?";
+    PreparedStatement preparedStatementValidacao = conn.prepareStatement(usuarioValidacao);
+    preparedStatementValidacao.setString(1, cpf);
+    preparedStatementValidacao.setString(2, senha);
+    ResultSet resultadoValidacao = preparedStatementValidacao.executeQuery();
+
+    if (resultadoValidacao.next()) {
+        String sqlTransacoes = "SELECT * FROM transacoes WHERE cpf = ? AND tipo_conta = 'corrente'";
+        PreparedStatement preparedStatementTransacoes = conn.prepareStatement(sqlTransacoes);
+        preparedStatementTransacoes.setString(1, cpf);
+        ResultSet resultadoTransacoes = preparedStatementTransacoes.executeQuery();
+
+        while (resultadoTransacoes.next()) {
+            Transacao transacao = new Transacao();
+            transacao.setCpf(resultadoTransacoes.getString("cpf"));
+            transacao.setTipoTransacao(resultadoTransacoes.getString("tipo_transacao"));
+            transacao.setValor(resultadoTransacoes.getDouble("valor"));
+            transacao.setTipoConta(resultadoTransacoes.getString("tipo_conta"));
+            transacao.setDataTransacao(resultadoTransacoes.getDate("data_transacao"));
+            
+            transacoes.add(transacao);
+        }
+    }
+
+    return transacoes;
+}
 }

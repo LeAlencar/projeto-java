@@ -30,7 +30,7 @@ public class MenuCliente extends javax.swing.JFrame {
         buttonDebitarCliente = new javax.swing.JButton();
         buttonDepositar = new javax.swing.JButton();
         buttonExibirSaldoCliente = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        buttonExibirExtrato = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,7 +58,12 @@ public class MenuCliente extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Exibir extrato da conta corrente");
+        buttonExibirExtrato.setText("Exibir extrato da conta corrente");
+        buttonExibirExtrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonExibirExtratoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,7 +81,7 @@ public class MenuCliente extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(buttonDepositar, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
                                 .addComponent(buttonDebitarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(buttonExibirExtrato, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(172, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -91,7 +96,7 @@ public class MenuCliente extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(buttonExibirSaldoCliente)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(buttonExibirExtrato)
                 .addContainerGap(69, Short.MAX_VALUE))
         );
 
@@ -115,12 +120,17 @@ public class MenuCliente extends javax.swing.JFrame {
                 
     }//GEN-LAST:event_buttonDepositarActionPerformed
 
+    private void buttonExibirExtratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExibirExtratoActionPerformed
+        Extrato extratoCliente = new Extrato();
+        extratoCliente.setVisible(true);
+    }//GEN-LAST:event_buttonExibirExtratoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonDebitarCliente;
     private javax.swing.JButton buttonDepositar;
+    private javax.swing.JButton buttonExibirExtrato;
     private javax.swing.JButton buttonExibirSaldoCliente;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
