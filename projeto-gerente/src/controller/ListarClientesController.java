@@ -9,8 +9,6 @@ import DAO.Conexao;
 import DAO.ContaDAO;
 import model.Conta;
 import view.ListarClientes;
-import view.SaldoCliente;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;

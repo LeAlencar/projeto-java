@@ -33,16 +33,13 @@ public class CriarClienteController {
 
         switch (tipoConta) {
             case 1 -> {
-                // Conta Corrente
                 double limite = Double.parseDouble(view.getEntradaLimiteContaCorrente().getText());
                 double saldoInicial = Double.parseDouble(view.getEntradaSaldo().getText());
                 conta = new ContaCorrente(view.getEntradaCPF().getText(), saldoInicial, limite);          
             }
             case 2 -> 
-                // Conta Salário
                 conta = new ContaSalario(view.getEntradaCPF().getText(), Double.parseDouble(view.getEntradaSaldo().getText()));
             case 3 -> 
-                // Conta Poupança
                 conta = new ContaPoupanca(view.getEntradaCPF().getText(), Double.parseDouble(view.getEntradaSaldo().getText()));
             default ->
                 throw new IllegalStateException("Tipo de conta desconhecido: " + tipoConta);
@@ -56,7 +53,7 @@ public class CriarClienteController {
             ContaDAO contaDAO = new ContaDAO(conn);
             ResultSet clienteExiste = dao.consultarCliente(cliente);
             if(!clienteExiste.isBeforeFirst()) {
-                boolean clienteCriado = dao.criarCliente(cliente);
+                dao.criarCliente(cliente);
             }
             
             boolean contaCriada = contaDAO.criarConta(conta);

@@ -76,12 +76,12 @@ public class ContaDAO {
         ResultSet resultadoValidacao = preparedStatementValidacao.executeQuery();
 
         if (resultadoValidacao.next()) {
-            
+
             String sql = "SELECT * FROM contas WHERE cpf = ?";
 
             try (PreparedStatement statement = conn.prepareStatement(sql)) {
                 statement.setString(1, cpf);
-                
+
                 try (ResultSet resultSet = statement.executeQuery()) {
                     while (resultSet.next()) {
                         Conta conta = criarContaPorTipo(resultSet);
@@ -92,17 +92,17 @@ public class ContaDAO {
         }
         return contas;
     }
-    
+
     public SaldoELimite obterSaldoPorCPFeConta(String cpf, String tipoConta) throws SQLException {
         double saldo = 0.0; // Valor padrão caso nenhum resultado seja encontrado
         double limite = 0.0;
         SaldoELimite saldoELimite = null;
         String sql = "SELECT saldo, limite FROM contas WHERE cpf = ? AND tipo = ?";
-        
+
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.setString(1, cpf);
             preparedStatement.setString(2, tipoConta);
-            
+
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
                     saldo = resultSet.getDouble("saldo");
@@ -111,7 +111,7 @@ public class ContaDAO {
                 }
             }
         }
-        
+
         return saldoELimite;
     }
 
@@ -123,32 +123,32 @@ public class ContaDAO {
         ResultSet resultadoValidacao = preparedStatementValidacao.executeQuery();
 
         if (resultadoValidacao.next()) {
-            
+
             Date dataTransacao = new Date(); // Substitua pela data da transação
-            
+
             // Inserir a transação na tabela de transações
             String sqlInserirTransacao = "INSERT INTO transacoes (cpf, tipo_transacao, valor, tipo_conta, data_transacao) VALUES (?, ?, ?, ?, ?)";
-            
+
             PreparedStatement preparedStatementTransacao = conn.prepareStatement(sqlInserirTransacao);
             preparedStatementTransacao.setString(1, cpf);
             preparedStatementTransacao.setString(2, "debito");
             preparedStatementTransacao.setDouble(3, valor);
             preparedStatementTransacao.setString(4, tipoConta);
             preparedStatementTransacao.setDate(5, new java.sql.Date(dataTransacao.getTime()));
-            
+
             preparedStatementTransacao.executeUpdate();
 
             String sqlAtualizarSaldo = "UPDATE contas SET saldo = ? WHERE cpf = ? AND tipo = ?";
-            
+
             PreparedStatement preparedStatementSaldo = conn.prepareStatement(sqlAtualizarSaldo);
             preparedStatementSaldo.setDouble(1, saldoAtual);
             preparedStatementSaldo.setString(2, cpf);
             preparedStatementSaldo.setString(3, tipoConta);
-            
+
             preparedStatementSaldo.executeUpdate();
         }
     }
-    
+
     public void depositarValor(String cpf, String senha, String tipoConta, double valor, double saldoAtual) throws SQLException {
         String usuarioValidacao = "SELECT * FROM clientes WHERE cpf = ? AND senha = ?";
         PreparedStatement preparedStatementValidacao = conn.prepareStatement(usuarioValidacao);
@@ -157,60 +157,59 @@ public class ContaDAO {
         ResultSet resultadoValidacao = preparedStatementValidacao.executeQuery();
 
         if (resultadoValidacao.next()) {
-            
+
             Date dataTransacao = new Date(); // Substitua pela data da transação
-            
+
             // Inserir a transação na tabela de transações
             String sqlInserirTransacao = "INSERT INTO transacoes (cpf, tipo_transacao, valor, tipo_conta, data_transacao) VALUES (?, ?, ?, ?, ?)";
-            
+
             PreparedStatement preparedStatementTransacao = conn.prepareStatement(sqlInserirTransacao);
             preparedStatementTransacao.setString(1, cpf);
             preparedStatementTransacao.setString(2, "deposito");
             preparedStatementTransacao.setDouble(3, valor);
             preparedStatementTransacao.setString(4, tipoConta);
             preparedStatementTransacao.setDate(5, new java.sql.Date(dataTransacao.getTime()));
-            
+
             preparedStatementTransacao.executeUpdate();
 
             String sqlAtualizarSaldo = "UPDATE contas SET saldo = ? WHERE cpf = ? AND tipo = ?";
-            
+
             PreparedStatement preparedStatementSaldo = conn.prepareStatement(sqlAtualizarSaldo);
             preparedStatementSaldo.setDouble(1, saldoAtual);
             preparedStatementSaldo.setString(2, cpf);
             preparedStatementSaldo.setString(3, tipoConta);
-            
+
             preparedStatementSaldo.executeUpdate();
         }
     }
-    
+
     public List<Transacao> listarTransacoes(String cpf, String senha) throws SQLException {
-    List<Transacao> transacoes = new ArrayList<>();
+        List<Transacao> transacoes = new ArrayList<>();
 
-    // Validação do usuário
-    String usuarioValidacao = "SELECT * FROM clientes WHERE cpf = ? AND senha = ?";
-    PreparedStatement preparedStatementValidacao = conn.prepareStatement(usuarioValidacao);
-    preparedStatementValidacao.setString(1, cpf);
-    preparedStatementValidacao.setString(2, senha);
-    ResultSet resultadoValidacao = preparedStatementValidacao.executeQuery();
+        String usuarioValidacao = "SELECT * FROM clientes WHERE cpf = ? AND senha = ?";
+        PreparedStatement preparedStatementValidacao = conn.prepareStatement(usuarioValidacao);
+        preparedStatementValidacao.setString(1, cpf);
+        preparedStatementValidacao.setString(2, senha);
+        ResultSet resultadoValidacao = preparedStatementValidacao.executeQuery();
 
-    if (resultadoValidacao.next()) {
-        String sqlTransacoes = "SELECT * FROM transacoes WHERE cpf = ? AND tipo_conta = 'corrente'";
-        PreparedStatement preparedStatementTransacoes = conn.prepareStatement(sqlTransacoes);
-        preparedStatementTransacoes.setString(1, cpf);
-        ResultSet resultadoTransacoes = preparedStatementTransacoes.executeQuery();
+        if (resultadoValidacao.next()) {
+            String sqlTransacoes = "SELECT * FROM transacoes WHERE cpf = ? AND tipo_conta = 'corrente'";
+            PreparedStatement preparedStatementTransacoes = conn.prepareStatement(sqlTransacoes);
+            preparedStatementTransacoes.setString(1, cpf);
+            ResultSet resultadoTransacoes = preparedStatementTransacoes.executeQuery();
 
-        while (resultadoTransacoes.next()) {
-            Transacao transacao = new Transacao();
-            transacao.setCpf(resultadoTransacoes.getString("cpf"));
-            transacao.setTipoTransacao(resultadoTransacoes.getString("tipo_transacao"));
-            transacao.setValor(resultadoTransacoes.getDouble("valor"));
-            transacao.setTipoConta(resultadoTransacoes.getString("tipo_conta"));
-            transacao.setDataTransacao(resultadoTransacoes.getDate("data_transacao"));
-            
-            transacoes.add(transacao);
+            while (resultadoTransacoes.next()) {
+                Transacao transacao = new Transacao();
+                transacao.setCpf(resultadoTransacoes.getString("cpf"));
+                transacao.setTipoTransacao(resultadoTransacoes.getString("tipo_transacao"));
+                transacao.setValor(resultadoTransacoes.getDouble("valor"));
+                transacao.setTipoConta(resultadoTransacoes.getString("tipo_conta"));
+                transacao.setDataTransacao(resultadoTransacoes.getDate("data_transacao"));
+
+                transacoes.add(transacao);
+            }
         }
-    }
 
-    return transacoes;
-}
+        return transacoes;
+    }
 }

@@ -33,7 +33,7 @@ public class ListarTransacoesController {
             List<Transacao> transacoes = dao.listarTransacoes(view.getEntradaCPF().getText(), view.getEntradaSenha().getText());
 
             if (!transacoes.isEmpty()) {
-                DefaultTableModel model = (DefaultTableModel) view.getjTable1().getModel(); // Substitua pelo nome real do seu JTable
+                DefaultTableModel model = (DefaultTableModel) view.getjTable1().getModel();
                 model.setRowCount(0);
                 model.setColumnIdentifiers(new Object[]{"CPF", "Tipo Transação", "Tipo Conta", "Valor", "Data Transação"});
 

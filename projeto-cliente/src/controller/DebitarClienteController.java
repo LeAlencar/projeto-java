@@ -52,18 +52,14 @@ public class DebitarClienteController {
                     tipoConta = "salario";
                     conta = new ContaSalario(cpf, saldoELimite.getSaldo());
                 }
-                   
-                    
                 case 3 -> {
                     tipoConta = "poupanca";
                     conta = new ContaPoupanca(cpf, saldoELimite.getSaldo());
                 }
-                  
-                    
                 default ->
                     throw new IllegalStateException("Tipo de conta desconhecido: ");
             }
-            
+
             conta.sacar(valor);
             dao.debitarValor(cpf, senha, tipoConta, valor, conta.getSaldo());
             JOptionPane.showMessageDialog(view, "Valor debitado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
