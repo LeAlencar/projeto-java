@@ -21,10 +21,17 @@ import view.SaldoCliente;
 public class ExibirSaldoController {
     private SaldoCliente view;
 
+    /**
+     *
+     * @param view
+     */
     public ExibirSaldoController(SaldoCliente view) {
         this.view = view;
     }
     
+    /**
+     *
+     */
     public void ListarSaldos() {
 
         Conexao conexao = new Conexao();

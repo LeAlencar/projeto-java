@@ -9,6 +9,12 @@ import java.sql.DriverManager;
  * @author leandroalencar
  */
 public class Conexao {
+
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public Connection getConnection() throws SQLException {
         String url = "jdbc:postgresql://localhost:5432/projeto-java";
         

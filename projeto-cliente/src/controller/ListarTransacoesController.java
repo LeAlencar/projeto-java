@@ -19,10 +19,17 @@ import model.Transacao;
 public class ListarTransacoesController {
     private Extrato view;
 
+    /**
+     *
+     * @param view
+     */
     public ListarTransacoesController(Extrato view) {
         this.view = view;
     }
     
+    /**
+     *
+     */
     public void ListarTransacoes() {
         Conexao conexao = new Conexao();
 

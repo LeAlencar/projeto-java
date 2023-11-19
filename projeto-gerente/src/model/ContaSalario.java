@@ -11,10 +11,20 @@ import Interfaces.RegrasTarifacao;
  */
 public class ContaSalario extends Conta implements RegrasTarifacao {
 
+    /**
+     *
+     * @param cpf
+     * @param saldoInicial
+     */
     public ContaSalario( String cpf, double saldoInicial) {
         super("salario", saldoInicial, cpf);
     }
 
+    /**
+     *
+     * @param valor
+     * @return
+     */
     @Override
     public boolean sacar(double valor) {
         if (getSaldo() >= valor) {
@@ -25,6 +35,10 @@ public class ContaSalario extends Conta implements RegrasTarifacao {
         return false;
     }
 
+    /**
+     *
+     * @param valor
+     */
     @Override
     public void aplicarTarifa(double valor) {
         double tarifa = valor * 0.05;

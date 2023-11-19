@@ -23,9 +23,16 @@ public class ContaDAO {
 
     private Connection conn;
 
+    /**
+     *
+     */
     public ContaDAO() {
     }
 
+    /**
+     *
+     * @param conn
+     */
     public ContaDAO(Connection conn) {
         this.conn = conn;
     }
@@ -54,6 +61,11 @@ public class ContaDAO {
         }
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public List<Conta> exibirTodasContas() throws SQLException {
         List<Conta> contas = new ArrayList<>();
         String sql = "SELECT * FROM contas";
@@ -67,6 +79,13 @@ public class ContaDAO {
         return contas;
     }
 
+    /**
+     *
+     * @param cpf
+     * @param senha
+     * @return
+     * @throws SQLException
+     */
     public List<Conta> exibirSaldoContasPorCPFSenha(String cpf, String senha) throws SQLException {
         List<Conta> contas = new ArrayList<>();
         String usuarioValidacao = "SELECT * FROM clientes WHERE cpf = ? AND senha = ?";
@@ -93,6 +112,13 @@ public class ContaDAO {
         return contas;
     }
 
+    /**
+     *
+     * @param cpf
+     * @param tipoConta
+     * @return
+     * @throws SQLException
+     */
     public SaldoELimite obterSaldoPorCPFeConta(String cpf, String tipoConta) throws SQLException {
         double saldo = 0.0; // Valor padrão caso nenhum resultado seja encontrado
         double limite = 0.0;
@@ -115,6 +141,15 @@ public class ContaDAO {
         return saldoELimite;
     }
 
+    /**
+     *
+     * @param cpf
+     * @param senha
+     * @param tipoConta
+     * @param valor
+     * @param saldoAtual
+     * @throws SQLException
+     */
     public void debitarValor(String cpf, String senha, String tipoConta, double valor, double saldoAtual) throws SQLException {
         String usuarioValidacao = "SELECT * FROM clientes WHERE cpf = ? AND senha = ?";
         PreparedStatement preparedStatementValidacao = conn.prepareStatement(usuarioValidacao);
@@ -149,6 +184,15 @@ public class ContaDAO {
         }
     }
 
+    /**
+     *
+     * @param cpf
+     * @param senha
+     * @param tipoConta
+     * @param valor
+     * @param saldoAtual
+     * @throws SQLException
+     */
     public void depositarValor(String cpf, String senha, String tipoConta, double valor, double saldoAtual) throws SQLException {
         String usuarioValidacao = "SELECT * FROM clientes WHERE cpf = ? AND senha = ?";
         PreparedStatement preparedStatementValidacao = conn.prepareStatement(usuarioValidacao);
@@ -183,6 +227,13 @@ public class ContaDAO {
         }
     }
 
+    /**
+     *
+     * @param cpf
+     * @param senha
+     * @return
+     * @throws SQLException
+     */
     public List<Transacao> listarTransacoes(String cpf, String senha) throws SQLException {
         List<Transacao> transacoes = new ArrayList<>();
 

@@ -18,10 +18,17 @@ public class SaldoClienteController {
 
     private SaldoCliente view;
 
+    /**
+     *
+     * @param view
+     */
     public SaldoClienteController(SaldoCliente view) {
         this.view = view;
     }
 
+    /**
+     *
+     */
     public void ListarSaldos() {
 
         Conexao conexao = new Conexao();

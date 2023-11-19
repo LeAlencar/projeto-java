@@ -22,10 +22,18 @@ public class ExcluirCliente extends javax.swing.JFrame {
         controller = new ExcluirClienteController(this);
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getEntradaExcluirCliente() {
         return entradaExcluirCliente;
     }
 
+    /**
+     *
+     * @param entradaExcluirCliente
+     */
     public void setEntradaExcluirCliente(JTextField entradaExcluirCliente) {
         this.entradaExcluirCliente = entradaExcluirCliente;
     }

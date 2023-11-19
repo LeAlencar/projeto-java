@@ -24,6 +24,10 @@ public class CriarCliente extends javax.swing.JFrame {
         controller = new CriarClienteController(this);
     }
 
+    /**
+     *
+     * @return
+     */
     public int getTipoContaSelecionada() {
         if (buttonContaCorrente.isSelected()) {
             return 1;
@@ -35,46 +39,90 @@ public class CriarCliente extends javax.swing.JFrame {
         return 0;
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getButtonCriarCliente() {
         return buttonCriarCliente;
     }
 
+    /**
+     *
+     * @param buttonCriarCliente
+     */
     public void setButtonCriarCliente(JButton buttonCriarCliente) {
         this.buttonCriarCliente = buttonCriarCliente;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getEntradaCPF() {
         return entradaCPF;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getEntradaLimiteContaCorrente() {
         return entradaLimiteContaCorrente;
     }
 
+    /**
+     *
+     * @param entradaCPF
+     */
     public void setEntradaCPF(JTextField entradaCPF) {
         this.entradaCPF = entradaCPF;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getEntradaNome() {
         return entradaNome;
     }
 
+    /**
+     *
+     * @param entradaNome
+     */
     public void setEntradaNome(JTextField entradaNome) {
         this.entradaNome = entradaNome;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getEntradaSaldo() {
         return entradaSaldo;
     }
 
+    /**
+     *
+     * @param entradaSaldo
+     */
     public void setEntradaSaldo(JTextField entradaSaldo) {
         this.entradaSaldo = entradaSaldo;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getEntradaSenha() {
         return entradaSenha;
     }
 
+    /**
+     *
+     * @param entradaSenha
+     */
     public void setEntradaSenha(JTextField entradaSenha) {
         this.entradaSenha = entradaSenha;
     }

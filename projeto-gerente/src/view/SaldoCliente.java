@@ -22,10 +22,18 @@ public class SaldoCliente extends javax.swing.JFrame {
         controller = new SaldoClienteController(this);
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getEntradaCPF() {
         return entradaCPF;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTableContas() {
         return tableContas;
     }

@@ -22,10 +22,17 @@ import java.util.List;
 public class ListarClientesController {
     private ListarClientes view;
 
+    /**
+     *
+     * @param view
+     */
     public ListarClientesController(ListarClientes view) {
         this.view = view;
     }
 
+    /**
+     *
+     */
     public void ListarClientes() {
 
         Conexao conexao = new Conexao();

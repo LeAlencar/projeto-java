@@ -24,10 +24,17 @@ public class DebitarClienteController {
 
     private DebitarCliente view;
 
+    /**
+     *
+     * @param view
+     */
     public DebitarClienteController(DebitarCliente view) {
         this.view = view;
     }
 
+    /**
+     *
+     */
     public void debitarValor() {
         Conexao conexao = new Conexao();
         int tipoContaSelecionada = view.getTipoContaSelecionada();

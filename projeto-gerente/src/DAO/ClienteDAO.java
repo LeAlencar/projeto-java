@@ -14,13 +14,26 @@ public class ClienteDAO {
 
     private Connection conn;
 
+    /**
+     *
+     */
     public ClienteDAO() {
     }
 
+    /**
+     *
+     * @param conn
+     */
     public ClienteDAO(Connection conn) {
         this.conn = conn;
     }
 
+    /**
+     *
+     * @param cliente
+     * @return
+     * @throws SQLException
+     */
     public ResultSet consultarCliente(Cliente cliente) throws SQLException {
         String sql = "SELECT * FROM contas WHERE cpf = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
@@ -31,6 +44,12 @@ public class ClienteDAO {
         return resultado;
     }
 
+    /**
+     *
+     * @param cliente
+     * @return
+     * @throws SQLException
+     */
     public boolean criarCliente(Cliente cliente) throws SQLException {
         String sql = "INSERT INTO clientes (nome, senha, cpf) VALUES (?, ?, ?)";
 
@@ -44,6 +63,12 @@ public class ClienteDAO {
         return criou > 0; 
     }
 
+    /**
+     *
+     * @param cliente
+     * @return
+     * @throws SQLException
+     */
     public boolean excluirCliente(Cliente cliente) throws SQLException {
         String sql = "DELETE FROM clientes WHERE cpf = ?";
 

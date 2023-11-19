@@ -17,6 +17,14 @@ public class Transacao {
     private String tipoConta;
     private Date dataTransacao;
 
+    /**
+     *
+     * @param cpf
+     * @param tipoTransacao
+     * @param valor
+     * @param tipoConta
+     * @param dataTransacao
+     */
     public Transacao(String cpf, String tipoTransacao, double valor, String tipoConta, Date dataTransacao) {
         this.cpf = cpf;
         this.tipoTransacao = tipoTransacao;
@@ -25,45 +33,88 @@ public class Transacao {
         this.dataTransacao = dataTransacao;
     }
 
+    /**
+     *
+     */
     public Transacao() {
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCpf() {
         return cpf;
     }
 
+    /**
+     *
+     * @param cpf
+     */
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTipoTransacao() {
         return tipoTransacao;
     }
 
+    /**
+     *
+     * @param tipoTransacao
+     */
     public void setTipoTransacao(String tipoTransacao) {
         this.tipoTransacao = tipoTransacao;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getValor() {
         return valor;
     }
 
+    /**
+     *
+     * @param valor
+     */
     public void setValor(double valor) {
         this.valor = valor;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTipoConta() {
         return tipoConta;
     }
 
+    /**
+     *
+     * @param tipoConta
+     */
     public void setTipoConta(String tipoConta) {
         this.tipoConta = tipoConta;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getDataTransacao() {
         return dataTransacao;
     }
 
+    /**
+     *
+     * @param dataTransacao
+     */
     public void setDataTransacao(Date dataTransacao) {
         this.dataTransacao = dataTransacao;
     }

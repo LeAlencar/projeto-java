@@ -20,10 +20,17 @@ import javax.swing.JOptionPane;
 public class ExcluirClienteController {
     private ExcluirCliente view;
 
+    /**
+     *
+     * @param view
+     */
     public ExcluirClienteController(ExcluirCliente view) {
         this.view = view;
     }
 
+    /**
+     *
+     */
     public void excluirCliente() {
         Cliente cliente = new Cliente();
         String cpf = view.getEntradaExcluirCliente().getText();

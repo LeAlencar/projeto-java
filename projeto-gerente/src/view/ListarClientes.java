@@ -15,10 +15,19 @@ import javax.swing.*;
  */
 public class ListarClientes extends javax.swing.JFrame {
     private ListarClientesController controller;
+
+    /**
+     *
+     * @return
+     */
     public JTable getContasTable() {
         return contasTable;
     }
 
+    /**
+     *
+     * @param contasTable
+     */
     public void setContasTable(JTable contasTable) {
         this.contasTable = contasTable;
     }

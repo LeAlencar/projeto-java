@@ -20,9 +20,16 @@ public class ContaDAO {
 
     private Connection conn;
 
+    /**
+     *
+     */
     public ContaDAO() {
     }
 
+    /**
+     *
+     * @param conn
+     */
     public ContaDAO(Connection conn) {
         this.conn = conn;
     }
@@ -51,6 +58,11 @@ public class ContaDAO {
         }
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public List<Conta> exibirTodasContas() throws SQLException {
         List<Conta> contas = new ArrayList<>();
         String sql = "SELECT * FROM contas";
@@ -64,6 +76,12 @@ public class ContaDAO {
         return contas;
     }
 
+    /**
+     *
+     * @param cpf
+     * @return
+     * @throws SQLException
+     */
     public List<Conta> exibirSaldoContasPorCPF(String cpf) throws SQLException {
         List<Conta> contas = new ArrayList<>();
         String sql = "SELECT * FROM contas WHERE cpf = ?";
@@ -79,6 +97,12 @@ public class ContaDAO {
         return contas;
     }
 
+    /**
+     *
+     * @param conta
+     * @return
+     * @throws SQLException
+     */
     public boolean criarConta(Conta conta) throws SQLException {
         if (contaExiste(conta.getCpf(), conta.getTipo())) {
             return false; 
@@ -102,6 +126,12 @@ public class ContaDAO {
         }
     }
 
+    /**
+     *
+     * @param cpf
+     * @return
+     * @throws SQLException
+     */
     public boolean excluirContasPorCPF(String cpf) throws SQLException {
         String sql = "DELETE FROM contas WHERE cpf = ?";
         try (PreparedStatement statement = conn.prepareStatement(sql)) {

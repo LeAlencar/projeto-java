@@ -24,6 +24,10 @@ public class Deposito extends javax.swing.JFrame {
         controller = new DepositarClienteController(this);
     }
     
+    /**
+     *
+     * @return
+     */
     public int getTipoContaSelecionada() {
         if (buttonContaCorrente.isSelected()) {
             return 1;
@@ -35,30 +39,58 @@ public class Deposito extends javax.swing.JFrame {
         return 0;
     }
 
+    /**
+     *
+     * @return
+     */
     public JRadioButton getButtonContaCorrente() {
         return buttonContaCorrente;
     }
 
+    /**
+     *
+     * @return
+     */
     public JRadioButton getButtonContaPoupanca() {
         return buttonContaPoupanca;
     }
 
+    /**
+     *
+     * @return
+     */
     public JRadioButton getButtonContaSalario() {
         return buttonContaSalario;
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getButtonDepositar() {
         return buttonDepositar;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getEntradaCPF() {
         return entradaCPF;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getEntradaSenha() {
         return entradaSenha;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getEntradaValor() {
         return entradaValor;
     }

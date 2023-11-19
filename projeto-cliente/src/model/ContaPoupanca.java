@@ -10,10 +10,20 @@ package model;
  */
 public class ContaPoupanca extends Conta {
 
+    /**
+     *
+     * @param cpf
+     * @param saldoInicial
+     */
     public ContaPoupanca(String cpf, double saldoInicial) {
         super("poupanca", saldoInicial, cpf);
     }
 
+    /**
+     *
+     * @param valor
+     * @return
+     */
     @Override
     public boolean sacar(double valor) {
         if (getSaldo() >= valor) {

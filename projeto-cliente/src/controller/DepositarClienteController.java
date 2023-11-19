@@ -24,10 +24,17 @@ public class DepositarClienteController {
 
     private Deposito view;
 
+    /**
+     *
+     * @param view
+     */
     public DepositarClienteController(Deposito view) {
         this.view = view;
     }
 
+    /**
+     *
+     */
     public void DepositarValor() {
         Conexao conexao = new Conexao();
         int tipoContaSelecionada = view.getTipoContaSelecionada();

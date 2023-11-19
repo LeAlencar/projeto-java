@@ -22,10 +22,17 @@ public class CriarClienteController {
 
     private CriarCliente view;
 
+    /**
+     *
+     * @param view
+     */
     public CriarClienteController(CriarCliente view) {
         this.view = view;
     }
 
+    /**
+     *
+     */
     public void CriarCliente() {
         Cliente cliente = new Cliente(view.getEntradaNome().getText(), view.getEntradaSenha().getText(), view.getEntradaCPF().getText());
         int tipoConta = view.getTipoContaSelecionada();
